@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="StrumentiUrbanistici">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Ente">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="EnteConvenzionato" type="StringNVMax100Type" minOccurs="1" maxOccurs="1"/>
+                            <!-- -->
+                            <xs:element name="Denominazione" type="StringNVMax100Type"/>
+                            <!-- -->
+                            <xs:element name="Tipologia">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="UNIONE"/>
+                                        <xs:enumeration value="COMUNE"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <!-- -->
+                            <xs:element name="UnioneComuni" type="StringNVMax100Type" minOccurs="0"/>
+                            <!-- -->
+                            <xs:element name="Provincia">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="BOLOGNA"/>
+                                        <xs:enumeration value="MODENA"/>
+                                        <xs:enumeration value="RIMINI"/>
+                                        <xs:enumeration value="RAVENNA"/>
+                                        <xs:enumeration value="REGGIO_EMILIA"/>
+                                        <xs:enumeration value="FORLI_CESENA"/>
+                                        <xs:enumeration value="PIACENZA"/>
+                                        <xs:enumeration value="FERRARA"/>
+                                        <xs:enumeration value="PARMA"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <!-- -->
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <!-- -->
+                <xs:element name="Numero" type="StringNVMax100Type"/>
+                <!-- -->
+                <xs:element name="Anno" type="IntMax4DgtType"/>
+                <!-- -->
+                <xs:element name="TipoRegistro" type="StringNVMax100Type"/>
+                <!-- -->
+                <xs:element name="Data">
+                    <xs:simpleType>
+                        <xs:union memberTypes="xs:date xs:dateTime" />
+                    </xs:simpleType>
+                </xs:element>
+                <!-- -->
+                <xs:element name="Oggetto" type="StringMax4000Type"/>
+                <!-- -->
+                <xs:element name="FaseStrumento">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="ASSUNZIONE"/>
+                            <xs:enumeration value="ADOZIONE"/>
+                            <xs:enumeration value="APPROVAZIONE"/>
+                            <xs:enumeration value="APERTURA"/>
+                            <xs:enumeration value="CHIUSURA"/>
+                            <xs:enumeration value="PROPOSTA"/>
+                            <xs:enumeration value="STIPULA"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <!-- -->
+                <xs:element name="TipoUnitaDocumentaria">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="PIANO URBANISTICO GENERALE"/>
+                            <xs:enumeration value="PIANO SETTORIALE"/>
+                            <xs:enumeration value="VARIANTE DI PIANO"/>
+                            <xs:enumeration value="PIANO ATTUATIVO DI INIZIATIVA PUBBLICA"/>
+                            <xs:enumeration value="ACCORDO OPERATIVO"/>
+                            <xs:enumeration value="PROCEDIMENTO UNICO"/>
+                            <xs:enumeration value="PIANO ARENILE"/>
+                            <xs:enumeration value="ACCORDO DI PROGRAMMA"/>
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:element>
+                <!-- -->
+                <xs:element name="TipoDocumentoPrincipale">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="NomeTipoDocumento" type="TipoDocumentoPrincipaleEnumeration"/>
+                            <xs:element name="NomeFileOriginale" type="StringMax100Type"/>
+                            <xs:element name="NomeFileVersato" type="StringMax100Type"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <!-- -->
+                <xs:element name="TipiDocumento">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="TipoDocumento" maxOccurs="20" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="NomeTipoDocumento" type="TipoDocumentoEnumeration"/>
+                                        <xs:element name="NomeFileOriginale" type="StringMax100Type"/>
+                                        <xs:element name="NomeFileVersato" type="StringMax100Type"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <!-- -->
+                <xs:element name="Collegamenti" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Collegamento" maxOccurs="2" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <!-- -->
+                                        <xs:element name="Numero" type="StringNVMax100Type"/>
+                                        <!-- -->
+                                        <xs:element name="Anno" type="IntMax4DgtType"/>
+                                        <!-- -->
+                                        <xs:element name="TipoRegistro" type="StringNVMax100Type"/>
+                                        <!-- -->
+                                        <xs:element name="FaseStrumento">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:enumeration value="ASSUNZIONE"/>
+                                                    <xs:enumeration value="ADOZIONE"/>
+                                                    <xs:enumeration value="APPROVAZIONE"/>
+                                                    <xs:enumeration value="APERTURA"/>
+                                                    <xs:enumeration value="CHIUSURA"/>
+                                                    <xs:enumeration value="PROPOSTA"/>
+                                                    <xs:enumeration value="STIPULA"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <!-- -->
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <!-- -->
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <!-- FINE StrumentiUrbanistici -->
+    <xs:simpleType name="TipoDocumentoPrincipaleEnumeration">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="DELIBERA STRUMENTO URBANISTICO"/>
+            <xs:enumeration value="ATTO DELLA CONFERENZA DEI SERVIZI"/>
+            <xs:enumeration value="TESTO ACCORDO DI PROGRAMMA"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TipoDocumentoEnumeration">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ALTRI ATTI RELAZIONI E PARERI"/>
+            <xs:enumeration value="VALSAT"/>
+            <xs:enumeration value="QUADRO CONOSCITIVO"/>
+            <xs:enumeration value="OSSERVAZIONI PERVENUTE"/>
+            <xs:enumeration value="TAVOLA E SCHEDA DEI VINCOLI"/>
+            <xs:enumeration value="SCHEMA DI ASSETTO DEL TERRITORIO URBANIZZATO"/>
+            <xs:enumeration value="ELABORATI CARTOGRAFICI"/>
+            <xs:enumeration value="STRATEGIA PER LA QUALITA URBANA ED ECOLOGICO-AMBIENTALE"/>
+            <xs:enumeration value="DATI GEOGRAFICI"/>
+            <xs:enumeration value="ATTI NEGOZIALI E RELAZIONE ECONOMICO-FINANZIARIA"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- TIPI DATO GENERICI -->
+    <xs:simpleType name="TokenNonVuotoType">
+        <xs:restriction base="xs:token">
+            <xs:minLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TokenNVMax100Type">
+        <xs:restriction base="xs:token">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TokenNVMax254Type">
+        <xs:restriction base="xs:token">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="254"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TokenNVMax1024Type">
+        <xs:restriction base="xs:token">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="1024"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringNonVuotoType">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringNVMax100Type">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringNVMax254Type">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="254"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringNVMax1024Type">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="1024"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringMax100Type">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringMax254Type">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="254"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringMax1024Type">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="1024"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringMax4000Type">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="4000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="IntMax4DgtType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="9999"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="IntMax5DgtType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="99999"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="PosIntMax12DgtType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="999999999999"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <!-- FINE TIPI DATO GENERICI -->
+</xs:schema>

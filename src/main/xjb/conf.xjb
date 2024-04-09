@@ -1,0 +1,27 @@
+<jxb:bindings version="1.0"
+                    xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+                    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+                    jxb:extensionBindingPrefixes="xjc" >
+    
+<!--        <jxb:globalBindings typesafeEnumBase="xsd:string">
+        </jxb:globalBindings>
+      -->
+<!--
+      <jxb:bindings typesafeEnumBase="xsd:string" 
+                    schemaLocation="../resources/xsd/it/eng/sacerasi/ws/xml/datiSpecFiltri/WSDatiSpecificiDiarioFiltri.xsd" 
+                    node="//xsd:schema">
+      </jxb:bindings>
+-->
+<!--
+    <jxb:globalBindings generateIsSetMethod="true" fixedAttributeAsConstantProperty="true">
+        <xjc:serializable />
+    </jxb:globalBindings>    
+    
+    <jxb:bindings schemaLocation="WSDatiSpecificiDiarioFiltri.xsd">
+        <jxb:bindings node="//xs:element[@name='FiltroUnValore']/xs:complexType/xs:sequence/xs:element[@name='Operatore']/xs:simpleType">
+               <jxb:typesafeEnumClass name="OperatoreType" />
+        </jxb:bindings>
+   </jxb:bindings>              
+-->                                  
+</jxb:bindings>

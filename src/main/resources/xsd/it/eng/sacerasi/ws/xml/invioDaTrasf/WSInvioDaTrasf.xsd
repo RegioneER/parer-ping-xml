@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://invioasync.xml.ws.sacerasi.eng.it/" 
+		   xmlns:xs="http://www.w3.org/2001/XMLSchema" 		  
+		   targetNamespace="http://invioasync.xml.ws.sacerasi.eng.it/">
+
+  <xs:element name="Oggetto" type="OggettoType"/>
+
+
+
+  <!--  Type per oggetto -->
+
+  <xs:complexType name="OggettoType">
+    <xs:sequence>
+      <xs:element name="DatiSpecifici" type="DatiSpecificiType" minOccurs="1" maxOccurs="1" nillable="true"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!--  -->
+  <xs:complexType name="DatiSpecificiType">
+    <xs:sequence>
+      <xs:element name="VersioneDatiSpecifici" type="StringNVMax1024Type"/>
+      <xs:any minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+
+                                  <!-- TIPI DATO GENERICI -->
+  <!--  -->
+
+  <xs:simpleType name="StringNVMax1024Type">
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+      <xs:maxLength value="1024"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>
+
+
+
+

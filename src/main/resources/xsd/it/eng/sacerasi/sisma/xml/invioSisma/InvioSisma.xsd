@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+    <xs:element name="ProgettiSisma">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- -->
+                <xs:element name="Ente">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="DenominazioneEnteVersante" type="StringNVMax100Type"/>
+                            <xs:element name="Versatore" type="StringNVMax100Type"/>
+                            <xs:element name="TipologiaVersatore" type="StringNVMax100Type"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <!-- -->
+                <xs:element name="Numero" type="StringNVMax100Type"/>
+                <!-- -->
+                <xs:element name="Anno" type="IntMax4DgtType"/>
+                <!-- -->
+                <xs:element name="TipoRegistro" type="StringNVMax100Type"/>
+                <!-- -->
+                <!-- serie teoricamente presente solo su tipo "AGENZIA" -->
+                <xs:sequence minOccurs="0">
+                    <!-- -->
+                    <xs:element name="NumeroRegistroEnte" type="StringNVMax100Type"/>
+                    <xs:element name="AnnoRegistroEnte" type="IntMax4DgtType"/>
+                    <xs:element name="TipoRegistroEnte" type="StringNVMax100Type"/>
+                    <xs:element name="DataEnte">
+                        <xs:simpleType>
+                            <xs:union memberTypes="xs:date xs:dateTime" />
+                        </xs:simpleType>
+                    </xs:element>
+                    <!-- -->
+                </xs:sequence>
+                <!-- -->
+                <xs:element name="Data">
+                    <xs:simpleType>
+                        <xs:union memberTypes="xs:date xs:dateTime" />
+                    </xs:simpleType>
+                </xs:element>
+                <!-- -->
+                <xs:element name="Oggetto" type="StringMax4000Type"/>
+                <!-- -->
+                <xs:element name="IdentificativoAttoEnte" type="StringNVMax100Type"/>
+                <!-- -->
+                <xs:element name="LineaFinanziamento" type="StringNVMax100Type"/>
+                <!-- -->
+                <xs:element name="CodiceIntervento" type="StringNVMax100Type"/>
+                <!-- -->
+                <xs:element name="SoggettoATutela" type="StringNVMax100Type"/>
+                <!-- -->
+                <xs:element name="DenominazioneIntervento" type="StringMax4000Type"/>
+                <!-- -->
+                <xs:element name="EnteProprietario" type="StringNVMax100Type"/>
+                <!-- -->
+                <xs:element name="NaturaEnteProprietario" type="StringNVMax100Type"/>
+                <!-- -->
+                <xs:element name="UbicazioneImmobileProvincia" type="StringNVMax100Type"/>
+                <!-- -->
+                <xs:element name="UbicazioneImmobileComune" type="StringNVMax100Type"/>
+                <!-- -->
+                <xs:element name="Note" type="StringMax4000Type" minOccurs="0"/>
+                <!-- -->
+                <xs:element name="SoggettoAttuatore" type="StringNVMax100Type"/>
+                <!-- -->
+                <xs:element name="NaturaSoggettoAttuatore" type="StringNVMax100Type"/>
+                <!-- -->
+                <xs:element name="FaseProgettuale" type="StringNVMax100Type"/>
+                <!-- -->
+                <xs:element name="StatoProgetto" type="StringNVMax100Type"/>
+                <!-- -->
+                <xs:element name="TipologiaUnitaDocumentaria" type="StringNVMax100Type"/>
+                <!-- -->
+                <xs:element name="ProfiloArchivistico" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="FascicoloPrincipale" type="CamiciaFascicoloType"/>
+                            <xs:element name="FascicoliSecondari" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="FascicoloSecondario" type="CamiciaFascicoloType" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <!-- -->
+                <xs:element name="TipoDocumentoPrincipale">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <!-- <xs:element name="NomeTipoDocumento" type="TipoDocumentoPrincipaleEnumeration"/> -->
+                            <xs:element name="NomeTipoDocumento" type="StringMax100Type"/>
+                            <xs:element name="NomeFileOriginale" type="StringMax100Type"/>
+                            <xs:element name="NomeFileVersato" type="StringMax100Type"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <!-- -->
+                <xs:element name="TipiDocumento">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="TipoDocumento" maxOccurs="20" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <!-- <xs:element name="NomeTipoDocumento" type="TipoDocumentoEnumeration"/> -->
+                                        <xs:element name="NomeTipoDocumento" type="StringMax100Type"/>
+                                        <xs:element name="NomeFileOriginale" type="StringMax100Type"/>
+                                        <xs:element name="NomeFileVersato" type="StringMax100Type"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <!-- -->
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- tipi per enumeration -->
+    <xs:simpleType name="SoggettoATutelaEnumeration">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SoggettoATutelaEnumeration 01"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NaturaSoggettoAttuatoreEnumeration">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="SoggettoATutelaEnumeration 01"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="FaseProgettualeEnumeration">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="FaseProgettuale 01"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StatoProgettoEnumeration">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="StatoProgetto 01"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TipologiaUnitaDocumentariaEnumeration">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="TipologiaUnitaDocumentaria 01"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TipoDocumentoPrincipaleEnumeration">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="TipoDocumentoPrincipaleEnumeration 01"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TipoDocumentoEnumeration">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="TipoDocumentoEnumeration 01"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <!-- tipi complessi -->
+    <xs:complexType name="CamiciaFascicoloType">
+        <xs:sequence>
+            <xs:element name="Classifica" type="TokenNVMax254Type" minOccurs="0"/>
+            <xs:element name="Fascicolo" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Identificativo"  type="TokenNVMax100Type" minOccurs="0" />
+                        <xs:element name="Oggetto" type="StringMax1024Type" minOccurs="0" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="SottoFascicolo" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Identificativo"  type="TokenNVMax100Type" minOccurs="0" />
+                        <xs:element name="Oggetto" type="StringMax1024Type" minOccurs="0" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- tipi generici -->
+    <xs:simpleType name="TokenNonVuotoType">
+        <xs:restriction base="xs:token">
+            <xs:minLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TokenNVMax100Type">
+        <xs:restriction base="xs:token">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TokenNVMax254Type">
+        <xs:restriction base="xs:token">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="254"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TokenNVMax1024Type">
+        <xs:restriction base="xs:token">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="1024"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringNonVuotoType">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringNVMax100Type">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringNVMax254Type">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="254"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringNVMax1024Type">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="1024"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringMax100Type">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringMax254Type">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="254"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringMax1024Type">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="1024"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="StringMax4000Type">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="4000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="IntMax4DgtType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="9999"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="IntMax5DgtType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="99999"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="PosIntMax12DgtType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="999999999999"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="NoEmptyToken">
+        <xs:restriction base="xs:token">
+            <xs:minLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
+
