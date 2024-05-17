@@ -8,7 +8,7 @@
     </parent>
     <groupId>it.eng.parer</groupId>
     <artifactId>preingest-xml</artifactId>
-    <version>3.0.17-SNAPSHOT</version>
+    <version>3.0.16</version>
     <name>preingest-xml</name>
     <description>Progetto PREINGEST-XML</description>
 
@@ -29,7 +29,7 @@
 
     <scm>
         <developerConnection>scm:git:https://github.com/RegioneER/parer-ping-xml.git</developerConnection>
-        <tag>HEAD</tag>
+        <tag>preingest-xml-3.0.16</tag>
     </scm>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
