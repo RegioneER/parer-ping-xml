@@ -30,7 +30,8 @@ public enum FileXSD {
     DATI_SPEC_FILTRI_XSD("/xsd/it/eng/sacerasi/ws/xml/datiSpecFiltri/WSDatiSpecificiDiarioFiltri.xsd"),
     INVIO_DA_TRASF_XSD("/xsd/it/eng/sacerasi/ws/xml/invioDaTrasf/WSInvioDaTrasf.xsd"),
     INVIO_SU_XSD("/xsd/it/eng/sacerasi/su/xml/invioSU/InvioSU.xsd"),
-    INVIO_SISMA_XSD("/xsd/it/eng/sacerasi/sisma/xml/invioSisma/InvioSisma.xsd");
+    INVIO_SISMA_XSD("/xsd/it/eng/sacerasi/sisma/xml/invioSisma/InvioSisma.xsd"),
+    UNITA_DOCUMENTARIA_XSD("/xsd/it/eng/sacerasi/xml/unitaDocumentaria/UnitaDocumentaria.xsd");
 
     private final String filename;
 

@@ -8,7 +8,7 @@
                 <xs:element name="Ente">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="DenominazioneEnteVersante" type="StringNVMax100Type"/>
+                            <xs:element name="DenominazioneEnteVersante" type="StringNVMax254Type"/>
                             <xs:element name="Versatore" type="StringNVMax100Type"/>
                             <xs:element name="TipologiaVersatore" type="StringNVMax100Type"/>
                         </xs:sequence>
@@ -53,7 +53,7 @@
                 <!-- -->
                 <xs:element name="DenominazioneIntervento" type="StringMax4000Type"/>
                 <!-- -->
-                <xs:element name="EnteProprietario" type="StringNVMax100Type"/>
+                <xs:element name="EnteProprietario" type="StringNVMax254Type"/>
                 <!-- -->
                 <xs:element name="NaturaEnteProprietario" type="StringNVMax100Type"/>
                 <!-- -->
@@ -63,7 +63,7 @@
                 <!-- -->
                 <xs:element name="Note" type="StringMax4000Type" minOccurs="0"/>
                 <!-- -->
-                <xs:element name="SoggettoAttuatore" type="StringNVMax100Type"/>
+                <xs:element name="SoggettoAttuatore" type="StringNVMax254Type"/>
                 <!-- -->
                 <xs:element name="NaturaSoggettoAttuatore" type="StringNVMax100Type"/>
                 <!-- -->
