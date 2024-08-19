@@ -21,7 +21,7 @@ import java.net.URL;
 
 /**
  * Classe che restituisce i nomi dei file XSD
- * 
+ *
  * In questo modo gli utilizzatori della libreria non devono conoscere i path dei file
  *
  * @author Moretti_Lum, Iacolucci_Ma
