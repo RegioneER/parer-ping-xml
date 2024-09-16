@@ -22,10 +22,10 @@
  */
 package it.eng.sacerasixml;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 
 /**
  *
@@ -36,25 +36,25 @@ public class TestJaxb {
     public TestJaxb() {
     }
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpClass() {
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDownClass() {
     }
 
-    @Before
+    @BeforeEach
     public void setUp() {
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
     }
 
     /*
      * @Test public void testJaxb1() { System.out.println("TEST Chiamata Recupero Diario da DPI");
-     * 
+     *
      * String datiXmlOri="<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>"+
      * "<ns2:ListaFiltri xmlns:ns2=\"http://diariofiltri.xml.ws.sacerasi.eng.it/\"><Filtro>"+
      * "<FiltroUnValore><DatoSpecifico>AETNodoDicom</DatoSpecifico><Operatore>UGUALE</Operatore><Valore>DCM4CHEE</Valore></FiltroUnValore>"+
@@ -68,20 +68,20 @@ public class TestJaxb {
      * schemaFctry.newSchema(new File(
      * "/Progetti/parer-ping-xml/target/classes/xsd/it/eng/sacerasi/ws/xml/datiSpecFiltri/WSDatiSpecificiDiarioFiltri.xsd"
      * )); Unmarshaller u = datispecFiltriCtx_ListaFiltri.createUnmarshaller(); u.setSchema(datispecFiltriSchema);
-     * 
+     *
      * JAXBElement<ListaFiltriType> elemento=(JAXBElement<ListaFiltriType>)u.unmarshal(source); ListaFiltriType
      * parsedListaFiltri = elemento.getValue(); System.out.println("asdas"+parsedListaFiltri);
-     * 
+     *
      * } catch (JAXBException | SAXException ex) { ex.printStackTrace(); } }
      */
     /*
      * @Test public void testJaxb2() { System.out.println("TEST Chiamata Recupero Diario da DPI");
-     * 
+     *
      * String datiXmlOri= "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
      * "<ns2:ListaUnitaDocumentarie xmlns:ns2=\"http://invioasync.xml.ws.sacerasi.eng.it/\">\n" +
-     * 
+     *
      * "    <Versione>1.0</Versione>\n" +
-     * 
+     *
      * "    <UnitaDocumentaria>\n" +
      * "        <ns3:DatiSpecifici xmlns:ns3=\"http://datispecdicom.xml.ws.sacerasi.eng.it/\">\n" +
      * "            <VersioneDatiSpecifici>1.0</VersioneDatiSpecifici>\n" +
@@ -110,11 +110,11 @@ public class TestJaxb {
      * "            <FILE-hash-algo>SHA-1</FILE-hash-algo>\n" +
      * "            <FILE-hash-encoding>hexBinary</FILE-hash-encoding>\n" + "        </ns3:DatiSpecifici>\n" +
      * "    </UnitaDocumentaria>\n" +
-     * 
+     *
      * "</ns2:ListaUnitaDocumentarie>";
-     * 
+     *
      * // StringReader tmpReaderFiltri = new StringReader(datiXml);
-     * 
+     *
      * try { XMLReader reader = XMLReaderFactory.createXMLReader(); //Create the filter (to add namespace) and set the
      * xmlReader as its parent. NamespaceFilter inFilter = new NamespaceFilter(null, false); inFilter.setParent(reader);
      * //Prepare the input, in this case a java.io.File (output) InputSource is = new InputSource(new
@@ -126,21 +126,21 @@ public class TestJaxb {
      * it.eng.sacerasi.ws.xml.invioAsync.ObjectFactory.class); Schema datispecFiltriSchema = schemaFctry.newSchema(new
      * File("/Progetti/parer-ping-xml/target/classes/xsd/it/eng/sacerasi/ws/xml/invioAsync/WSInvioAsync.xsd"));
      * Unmarshaller u = ctx.createUnmarshaller(); u.setSchema(datispecFiltriSchema);
-     * 
+     *
      * JAXBElement<ListaUnitaDocumentarieType> elemento=(JAXBElement<ListaUnitaDocumentarieType>)u.unmarshal(source);
      * ListaUnitaDocumentarieType parsedListaFiltri = elemento.getValue();
      * System.out.println("asdas"+parsedListaFiltri);
-     * 
+     *
      * } catch (JAXBException | SAXException ex) { ex.printStackTrace(); } }
      */
     /*
      * @Test public void testJaxb3() { System.out.println("TEST Chiamata Recupero Diario da DPI");
-     * 
+     *
      * String datiXmlOri= "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
      * "<ns2:ListaUnitaDocumentarie xmlns:ns2=\"http://invioasync.xml.ws.sacerasi.eng.it/\">\n" +
-     * 
+     *
      * "    <Versione>1.0</Versione>\n" +
-     * 
+     *
      * "    <UnitaDocumentaria>\n" +
      * "        <ns3:DatiSpecifici xmlns:ns3=\"http://datispecdicom.xml.ws.sacerasi.eng.it/\">\n" +
      * "            <VersioneDatiSpecifici>1.0</VersioneDatiSpecifici>\n" +
@@ -169,13 +169,13 @@ public class TestJaxb {
      * "            <FILE-hash-algo>SHA-1</FILE-hash-algo>\n" +
      * "            <FILE-hash-encoding>hexBinary</FILE-hash-encoding>\n" + "        </ns3:DatiSpecifici>\n" +
      * "    </UnitaDocumentaria>\n" +
-     * 
+     *
      * "</ns2:ListaUnitaDocumentarie>";
-     * 
+     *
      * // StringReader tmpReaderFiltri = new StringReader(datiXml);
-     * 
+     *
      * try { JAXBContext ctx = JAXBContext.newInstance("it.eng.sacerasi.ws.xml.invioAsync");
-     * 
+     *
      * Unmarshaller u = ctx.createUnmarshaller(); SchemaFactory schemaFctry =
      * SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI); Schema datispecFiltriSchema =
      * schemaFctry.newSchema(new
@@ -185,12 +185,12 @@ public class TestJaxb {
      * JAXBElement<ListaUnitaDocumentarieType> elemento=(JAXBElement<ListaUnitaDocumentarieType>)u.unmarshal(source);
      * ListaUnitaDocumentarieType parsedListaFiltri = elemento.getValue();
      * System.out.println("asdas"+parsedListaFiltri);
-     * 
+     *
      * } catch (JAXBException | SAXException ex) { ex.printStackTrace(); } }
      */
     /*
      * @Test public void testJaxb4() { System.out.println("TEST Chiamata Recupero Diario da DPI");
-     * 
+     *
      * String datiXmlOri= "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
      * "<ns2:ListaUnitaDocumentarie xmlns:ns2=\"http://invioasync.xml.ws.sacerasi.eng.it/\">\n" +
      * "    <Versione>1.0</Versione>\n" + "    <UnitaDocumentaria>\n" +
@@ -221,9 +221,9 @@ public class TestJaxb {
      * "            <FILE-hash-algo>SHA-1</FILE-hash-algo>\n" +
      * "            <FILE-hash-encoding>hexBinary</FILE-hash-encoding>\n" + "        </ns3:DatiSpecifici>\n" +
      * "    </UnitaDocumentaria>\n" + "</ns2:ListaUnitaDocumentarie>";
-     * 
+     *
      * // StringReader tmpReaderFiltri = new StringReader(datiXml);
-     * 
+     *
      * try { // JAXBContext ctx = JAXBContext.newInstance("it.eng.sacerasi.ws.xml.invioAsync"); JAXBContext ctx =
      * JAXBContext.newInstance(ListaUnitaDocumentarieType.class, it.eng.sacerasi.ws.xml.invioAsync.ObjectFactory.class);
      * Unmarshaller u = ctx.createUnmarshaller(); SchemaFactory schemaFctry =
@@ -235,17 +235,17 @@ public class TestJaxb {
      * JAXBElement<ListaUnitaDocumentarieType> elemento=(JAXBElement<ListaUnitaDocumentarieType>)u.unmarshal(source);
      * ListaUnitaDocumentarieType parsedListaFiltri = elemento.getValue();
      * System.out.println("asdas"+parsedListaFiltri);
-     * 
+     *
      * } catch (JAXBException | SAXException ex) { ex.printStackTrace(); } }
-     * 
-     * 
+     *
+     *
      */
     /*
      * @Test public void testJaxb6() { System.out.println("TEST InvioAsync");
-     * 
+     *
      * String datiXmlInvio= "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
      * "<ns2:ListaUnitaDocumentarie xmlns:ns2=\"http://invioasync.xml.ws.sacerasi.eng.it/\">\n" +
-     * 
+     *
      * "    <Versione>1.0</Versione>\n" + "    <UnitaDocumentaria>\n" +
      * "        <ns3:DatiSpecifici xmlns:ns3=\"http://datispecdicom.xml.ws.sacerasi.eng.it/\">\n" + //
      * "        <DatiSpecifici>\n" + "            <VersioneDatiSpecifici>1.0</VersioneDatiSpecifici>\n" +
@@ -274,9 +274,9 @@ public class TestJaxb {
      * "            <FILE-hash-algo>SHA-1</FILE-hash-algo>\n" +
      * "            <FILE-hash-encoding>hexBinary</FILE-hash-encoding>\n" + // "        </DatiSpecifici>\n" +
      * "        </ns3:DatiSpecifici>\n" + "    </UnitaDocumentaria>\n" +
-     * 
+     *
      * "</ns2:ListaUnitaDocumentarie>";
-     * 
+     *
      * try { XMLReader reader = XMLReaderFactory.createXMLReader(); //Create the filter (to add namespace) and set the
      * xmlReader as its parent. // NamespaceFilterForUnmashal inFilter = new NamespaceFilterForUnmashal();
      * NamespaceFilterForUnmashal inFilter = new NamespaceFilterForUnmashal(); inFilter.setParent(reader); //Prepare the
@@ -287,15 +287,15 @@ public class TestJaxb {
      * it.eng.sacerasi.ws.xml.invioAsync.ObjectFactory.class); Schema datispecFiltriSchema = schemaFctry.newSchema(new
      * File("/Progetti/parer-ping-xml/target/classes/xsd/it/eng/sacerasi/ws/xml/invioAsync/WSInvioAsync.xsd"));
      * Unmarshaller u = datispecFiltriCtx_ListaFiltri.createUnmarshaller(); u.setSchema(datispecFiltriSchema);
-     * 
+     *
      * JAXBElement<ListaUnitaDocumentarieType> elemento=(JAXBElement<ListaUnitaDocumentarieType>)u.unmarshal(source);
      * ListaUnitaDocumentarieType parsedListaFiltri = elemento.getValue();
      * System.out.println("asdas"+parsedListaFiltri);
-     * 
+     *
      * } catch (JAXBException | SAXException ex) { ex.printStackTrace(); }
-     * 
+     *
      * System.out.println("TEST DatiSpecifici");
-     * 
+     *
      * String datiXmlDatiSpecifici= "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
      * "<DatiSpecifici xmlns:ns2=\"http://invioasync.xml.ws.sacerasi.eng.it/\">\n" +
      * "	<VersioneDatiSpecifici>1.0</VersioneDatiSpecifici>\n" +
@@ -335,7 +335,7 @@ public class TestJaxb {
      * + "	<FILE-hash-algo xmlns:ns3=\"http://datispecdicom.xml.ws.sacerasi.eng.it/\">SHA-1</FILE-hash-algo>\n" +
      * "	<FILE-hash-encoding xmlns:ns3=\"http://datispecdicom.xml.ws.sacerasi.eng.it/\">hexBinary</FILE-hash-encoding>\n"
      * + "</DatiSpecifici>";
-     * 
+     *
      * try { XMLReader reader = XMLReaderFactory.createXMLReader(); //Create the filter (to add namespace) and set the
      * xmlReader as its parent. // NamespaceFilterForUnmashal inFilter = new NamespaceFilterForUnmashal();
      * NamespaceFilterForUnmashal inFilter = new NamespaceFilterForUnmashal(); inFilter.setParent(reader); //Prepare the
@@ -347,12 +347,12 @@ public class TestJaxb {
      * Schema datispecDicomSchema = schemaFctry.newSchema(new File(
      * "/Progetti/parer-ping-xml/target/classes/xsd/it/eng/sacerasi/ws/xml/datiSpecDicom/WSMetadatiSpecificiDICOM.xsd"))
      * ; Unmarshaller u = datiSpecDicomCtx.createUnmarshaller(); u.setSchema(datispecDicomSchema);
-     * 
+     *
      * JAXBElement<DatiSpecificiType> elemento=(JAXBElement<DatiSpecificiType>)u.unmarshal(source); DatiSpecificiType
      * datiSpec = elemento.getValue(); System.out.println("asdas"+datiSpec);
-     * 
+     *
      * } catch (JAXBException | SAXException ex) { ex.printStackTrace(); }
-     * 
+     *
      * }
      */
 }

@@ -4,11 +4,10 @@
     <parent>
         <groupId>it.eng.parer</groupId>
         <artifactId>parer-pom</artifactId>
-        <version>4.2.0</version>
+        <version>6.4.0</version>
     </parent>
-    <groupId>it.eng.parer</groupId>
     <artifactId>preingest-xml</artifactId>
-    <version>3.0.18-SNAPSHOT</version>
+    <version>3.1.1-SNAPSHOT</version>
     <name>preingest-xml</name>
     <description>Progetto PREINGEST-XML</description>
 
@@ -36,20 +35,32 @@
         <sonar.projectVersion>${project.version}</sonar.projectVersion>
         <!-- Skiptests by default : esecuzione su CI -->
         <skipTests>true</skipTests>
+        <junit-jupiter.version>5.10.3</junit-jupiter.version>        
+        <jaxb2-maven-plugin.version>2.5.0</jaxb2-maven-plugin.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>2.2.5.redhat-9</version>
-        </dependency>      
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>${jaxb.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-core</artifactId>
+			<version>${jaxb.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>${jaxb.version}</version>
+		</dependency>      
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
+		    <groupId>org.junit.jupiter</groupId>
+		    <artifactId>junit-jupiter-api</artifactId>
+		    <version>${junit-jupiter.version}</version>
+		    <scope>test</scope>
+		</dependency>
     </dependencies>
     
     <build>
@@ -57,7 +68,7 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxb2-maven-plugin</artifactId>
-                <version>2.2</version>
+                <version>${jaxb2-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>datispecdicom</id>
@@ -66,7 +77,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>${project.basedir}/src/main/resources/xsd/it/eng/sacerasi/ws/xml/datiSpecDicom/WSMetadatiSpecificiDICOM.xsd</source>
+                                <source>src/main/resources/xsd/it/eng/sacerasi/ws/xml/datiSpecDicom/WSMetadatiSpecificiDICOM.xsd</source>
                             </sources>
                             <packageName>it.eng.sacerasi.ws.xml.datiSpecDicom</packageName>
                         </configuration>
@@ -79,7 +90,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>${project.basedir}/src/main/resources/xsd/it/eng/sacerasi/ws/xml/datiSpecFiltri/WSDatiSpecificiDiarioFiltri.xsd</source>
+                                <source>src/main/resources/xsd/it/eng/sacerasi/ws/xml/datiSpecFiltri/WSDatiSpecificiDiarioFiltri.xsd</source>
                             </sources>
                             <packageName>it.eng.sacerasi.ws.xml.datiSpecFiltri</packageName>
                         </configuration>
@@ -91,7 +102,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>${project.basedir}/src/main/resources/xsd/it/eng/sacerasi/ws/xml/datiSpecOrder/WSDatiSpecificiDiarioOrder.xsd</source>
+                                <source>src/main/resources/xsd/it/eng/sacerasi/ws/xml/datiSpecOrder/WSDatiSpecificiDiarioOrder.xsd</source>
                             </sources>
                             <packageName>it.eng.sacerasi.ws.xml.datiSpecOrder</packageName>
                         </configuration>
@@ -103,7 +114,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>${project.basedir}/src/main/resources/xsd/it/eng/sacerasi/ws/xml/datiSpecOut/WSDatiSpecificiDiarioOut.xsd</source>
+                                <source>src/main/resources/xsd/it/eng/sacerasi/ws/xml/datiSpecOut/WSDatiSpecificiDiarioOut.xsd</source>
                             </sources>
                             <packageName>it.eng.sacerasi.ws.xml.datiSpecOut</packageName>
                         </configuration>
@@ -115,7 +126,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>${project.basedir}/src/main/resources/xsd/it/eng/sacerasi/ws/xml/datiSpecResult/WSDatiSpecificiDiarioResult.xsd</source>
+                                <source>src/main/resources/xsd/it/eng/sacerasi/ws/xml/datiSpecResult/WSDatiSpecificiDiarioResult.xsd</source>
                             </sources>
                             <packageName>it.eng.sacerasi.ws.xml.datiSpecResult</packageName>
                         </configuration>
@@ -127,7 +138,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>${project.basedir}/src/main/resources/xsd/it/eng/sacerasi/ws/xml/invioAsync/WSInvioAsync.xsd</source>
+                                <source>src/main/resources/xsd/it/eng/sacerasi/ws/xml/invioAsync/WSInvioAsync.xsd</source>
                             </sources>
                             <packageName>it.eng.sacerasi.ws.xml.invioAsync</packageName>
                         </configuration>
@@ -139,7 +150,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>${project.basedir}/src/main/resources/xsd/it/eng/sacerasi/ws/xml/invioDaTrasf/WSInvioDaTrasf.xsd</source>
+                                <source>src/main/resources/xsd/it/eng/sacerasi/ws/xml/invioDaTrasf/WSInvioDaTrasf.xsd</source>
                             </sources>
                             <packageName>it.eng.sacerasi.ws.xml.invioDaTrasf</packageName>
                         </configuration>
@@ -151,7 +162,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>${project.basedir}/src/main/resources/xsd/it/eng/sacerasi/su/xml/invioSU/InvioSU.xsd</source>
+                                <source>src/main/resources/xsd/it/eng/sacerasi/su/xml/invioSU/InvioSU.xsd</source>
                             </sources>
                             <packageName>it.eng.sacerasi.su.xml.invioSU</packageName>
                         </configuration>
@@ -163,7 +174,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>${project.basedir}/src/main/resources/xsd/it/eng/sacerasi/sisma/xml/invioSisma/InvioSisma.xsd</source>
+                                <source>src/main/resources/xsd/it/eng/sacerasi/sisma/xml/invioSisma/InvioSisma.xsd</source>
                             </sources>
                             <packageName>it.eng.sacerasi.sisma.xml.invioSisma</packageName>
                         </configuration>
@@ -175,7 +186,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>${project.basedir}/src/main/resources/xsd/it/eng/sacerasi/xml/unitaDocumentaria/UnitaDocumentaria.xsd</source>
+                                <source>src/main/resources/xsd/it/eng/sacerasi/xml/unitaDocumentaria/UnitaDocumentaria.xsd</source>
                             </sources>
                             <packageName>it.eng.sacerasi.xml.unitaDocumentaria</packageName>
                         </configuration>
@@ -184,11 +195,9 @@
 
                 <configuration>
                     <xjbSources>
-                        <xjbSource>${project.basedir}/src/main/xjb/conf.xjb</xjbSource>
+                        <xjbSource>src/main/xjb/conf.xjb</xjbSource>
                     </xjbSources>                    
-                    <removeOldOutput>false</removeOldOutput>
                     <clearOutputDir>false</clearOutputDir>
-                    <forceRegenerate>true</forceRegenerate>
                 </configuration>
             </plugin>
 
