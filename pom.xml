@@ -4,29 +4,28 @@
     <parent>
         <groupId>it.eng.parer</groupId>
         <artifactId>parer-pom</artifactId>
-        <version>6.4.0</version>
+        <version>6.4.1</version>
     </parent>
     <artifactId>preingest-xml</artifactId>
-    <version>3.1.1-SNAPSHOT</version>
+    <version>3.2.0</version>
     <name>preingest-xml</name>
     <description>Progetto PREINGEST-XML</description>
 
-    <distributionManagement>
+<distributionManagement>
         <repository>
           <id>github</id>
           <url>https://maven.pkg.github.com/RegioneER/parer-ping-xml</url>
         </repository>      
     </distributionManagement>
 
-    <repositories>
+<repositories>
         <repository>
             <id>github</id>
             <url>https://maven.pkg.github.com/RegioneER/parer-framework-parerpom</url>           
         </repository>          
      </repositories>
 
-
-    <scm>
+<scm>
         <developerConnection>scm:git:https://github.com/RegioneER/parer-ping-xml.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
