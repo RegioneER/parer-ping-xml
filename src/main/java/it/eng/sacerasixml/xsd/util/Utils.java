@@ -25,12 +25,14 @@ package it.eng.sacerasixml.xsd.util;
 import java.io.StringReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.Source;
 import javax.xml.transform.sax.SAXSource;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
-import org.xml.sax.helpers.XMLReaderFactory;
 
 /**
  *
@@ -47,10 +49,12 @@ public class Utils {
      * Metodo che consente di ignorare i namespace multipli all'interno di un xml passato dalle applicazioni. Senza
      * questo filtro JAXB esplode con gli XML che vengono passati.
      */
-    public static Source getSaxSourceForUnmarshal(String datiXml) throws SAXException {
-        XMLReader reader = XMLReaderFactory.createXMLReader();
+    public static Source getSaxSourceForUnmarshal(String datiXml) throws SAXException, ParserConfigurationException {
+        final SAXParserFactory sax = SAXParserFactory.newInstance();
+        sax.setNamespaceAware(true);
+        final XMLReader xmlReader = sax.newSAXParser().getXMLReader();
         NamespaceFilterForUnmashal inFilter = new NamespaceFilterForUnmashal();
-        inFilter.setParent(reader);
+        inFilter.setParent(xmlReader);
         InputSource is = new InputSource(new StringReader(datiXml));
         // Crea un SAXSource specificando il filtro per ignorare i namespaces
         return new SAXSource(inFilter, is);
