@@ -6,11 +6,11 @@
                 <xs:element name="Ente">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="EnteConvenzionato" type="StringNVMax100Type" minOccurs="1" maxOccurs="1"/>
+                            <xs:element name="EnteConvenzionato" type="StringNVMax100Type" minOccurs="0" maxOccurs="1"/>
                             <!-- -->
-                            <xs:element name="Denominazione" type="StringNVMax100Type"/>
+                            <xs:element name="Denominazione" type="StringNVMax100Type" minOccurs="0" maxOccurs="1"/>
                             <!-- -->
-                            <xs:element name="Tipologia">
+                            <xs:element name="Tipologia" minOccurs="0" maxOccurs="1">
                                 <xs:simpleType>
                                     <xs:restriction base="xs:string">
                                         <xs:enumeration value="UNIONE"/>
@@ -18,10 +18,26 @@
                                     </xs:restriction>
                                 </xs:simpleType>
                             </xs:element>
+                            <!-- ufficio urbanistica -->
+                            <xs:element name="DenominazioneEnteVersante" minOccurs="0" maxOccurs="1">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="REGIONE EMILIA-ROMAGNA"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="Versatore" type="StringNVMax100Type" minOccurs="0" maxOccurs="1"/>
+                            <xs:element name="TipologiaVersatore" minOccurs="0" maxOccurs="1">
+                                <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                        <xs:enumeration value="PRODUTTORE"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
                             <!-- -->
-                            <xs:element name="UnioneComuni" type="StringNVMax100Type" minOccurs="0"/>
+                            <xs:element name="UnioneComuni" type="StringNVMax100Type" minOccurs="0" maxOccurs="1"/>
                             <!-- -->
-                            <xs:element name="Provincia">
+                            <xs:element name="Provincia" minOccurs="0" maxOccurs="1">
                                 <xs:simpleType>
                                     <xs:restriction base="xs:string">
                                         <xs:enumeration value="BOLOGNA"/>
@@ -46,14 +62,40 @@
                 <xs:element name="Anno" type="IntMax4DgtType"/>
                 <!-- -->
                 <xs:element name="TipoRegistro" type="StringNVMax100Type"/>
+                <!-- ufficio urbanistica -->
+                <xs:element name="NumeroRegistroEnte" type="StringNVMax100Type" minOccurs="0" maxOccurs="1"/>
                 <!-- -->
-                <xs:element name="Data">
+                <xs:element name="AnnoRegistroEnte" type="IntMax4DgtType" minOccurs="0" maxOccurs="1"/>
+                <!-- -->
+                <xs:element name="TipoRegistroEnte" type="StringNVMax100Type" minOccurs="0" maxOccurs="1"/>
+                <!-- -->
+                <xs:element name="DataEnte" minOccurs="0" maxOccurs="1">
                     <xs:simpleType>
                         <xs:union memberTypes="xs:date xs:dateTime" />
                     </xs:simpleType>
                 </xs:element>
                 <!-- -->
+                <xs:element name="Data">
+                    <xs:simpleType>
+                        <xs:union memberTypes="xs:date xs:dateTime"/>
+                    </xs:simpleType>
+                </xs:element>
+                <!-- -->
                 <xs:element name="Oggetto" type="StringMax4000Type"/>
+                <!-- ufficio urbanistica -->
+                <xs:element name="EnteSU" type="StringNVMax100Type" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="TipologiaEnteSU" type="StringNVMax100Type" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="UnioneComuniEnteSU" type="StringNVMax100Type" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="ProvinciaEnteSU" type="StringNVMax100Type" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="IdPUC" type="StringNVMax100Type" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="IdVersUfficio" type="StringNVMax100Type" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="NumeroBurert" type="StringNVMax100Type" minOccurs="0" maxOccurs="1"/>
+                <xs:element name="DataBurert" minOccurs="0" maxOccurs="1">
+                    <xs:simpleType>
+                        <xs:union memberTypes="xs:date xs:dateTime" />
+                    </xs:simpleType>
+                </xs:element>
+                <xs:element name="IdentificativoStrumentoUrbanistico" type="StringNVMax100Type" minOccurs="0" maxOccurs="1"/>
                 <!-- -->
                 <xs:element name="FaseStrumento">
                     <xs:simpleType>
@@ -82,6 +124,36 @@
                             <xs:enumeration value="ACCORDO DI PROGRAMMA"/>
                         </xs:restriction>
                     </xs:simpleType>
+                </xs:element>
+                <!-- MEV 40191 -->
+                <xs:element name="ProfiloArchivistico" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="FascicoloPrincipale" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Classifica" type="StringMax100Type" minOccurs="0"/>
+                                        <xs:element name="Fascicolo" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Identificativo" type="StringMax100Type" minOccurs="0"/>
+                                                    <xs:element name="Oggetto" type="StringMax100Type" minOccurs="0"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="SottoFascicolo" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Identificativo" type="StringMax100Type" minOccurs="0"/>
+                                                    <xs:element name="Oggetto" type="StringMax100Type" minOccurs="0"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
                 </xs:element>
                 <!-- -->
                 <xs:element name="TipoDocumentoPrincipale">
@@ -113,7 +185,7 @@
                 <xs:element name="Collegamenti" minOccurs="0">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="Collegamento" maxOccurs="2" minOccurs="0">
+                            <xs:element name="Collegamento" maxOccurs="4" minOccurs="0">
                                 <xs:complexType>
                                     <xs:sequence>
                                         <!-- -->
@@ -123,7 +195,7 @@
                                         <!-- -->
                                         <xs:element name="TipoRegistro" type="StringNVMax100Type"/>
                                         <!-- -->
-                                        <xs:element name="FaseStrumento">
+                                        <xs:element name="FaseStrumento" minOccurs="0">
                                             <xs:simpleType>
                                                 <xs:restriction base="xs:string">
                                                     <xs:enumeration value="ASSUNZIONE"/>
