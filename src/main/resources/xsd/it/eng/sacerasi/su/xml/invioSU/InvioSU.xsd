@@ -205,6 +205,8 @@
                                                     <xs:enumeration value="CHIUSURA"/>
                                                     <xs:enumeration value="PROPOSTA"/>
                                                     <xs:enumeration value="STIPULA"/>
+                                                    <xs:enumeration value="BURERT DI PUBBLICAZIONE"/>
+                                                    <xs:enumeration value="PROTOCOLLAZIONE DELLA COMUNICAZIONE DI AVVENUTO VERSAMENTO"/>
                                                 </xs:restriction>
                                             </xs:simpleType>
                                         </xs:element>

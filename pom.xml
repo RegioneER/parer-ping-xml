@@ -4,10 +4,10 @@
     <parent>
         <groupId>it.eng.parer</groupId>
         <artifactId>parer-pom</artifactId>
-        <version>6.4.1</version>
+        <version>7.2.0</version>
     </parent>
     <artifactId>preingest-xml</artifactId>
-    <version>3.3.1-SNAPSHOT</version>
+    <version>3.4.0</version>
     <name>preingest-xml</name>
     <description>Progetto PREINGEST-XML</description>
 
@@ -34,8 +34,7 @@
         <sonar.projectVersion>${project.version}</sonar.projectVersion>
         <!-- Skiptests by default : esecuzione su CI -->
         <skipTests>true</skipTests>
-<!--        <junit-jupiter.version>5.10.3</junit-jupiter.version>-->
-        <junit-jupiter.version>5.9.2</junit-jupiter.version>
+        <junit-jupiter.version>5.14.3</junit-jupiter.version>
         <jaxb2-maven-plugin.version>2.5.0</jaxb2-maven-plugin.version>
     </properties>
 
