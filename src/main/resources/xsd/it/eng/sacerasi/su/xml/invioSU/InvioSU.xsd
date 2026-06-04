@@ -82,6 +82,7 @@
                 </xs:element>
                 <!-- -->
                 <xs:element name="Oggetto" type="StringMax4000Type"/>
+                <xs:element name="Descrizione" type="StringMax4000Type" minOccurs="0" maxOccurs="1"/>
                 <!-- ufficio urbanistica -->
                 <xs:element name="EnteSU" type="StringNVMax100Type" minOccurs="0" maxOccurs="1"/>
                 <xs:element name="TipologiaEnteSU" type="StringNVMax100Type" minOccurs="0" maxOccurs="1"/>
